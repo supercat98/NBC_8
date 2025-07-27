@@ -13,7 +13,7 @@ ASpartaGameState::ASpartaGameState() //생성자
 	Score = 0;
 	SpawnedCoinCount = 0;
 	CollectedCoinCount = 0;
-	LevelDuration = 30.0f;
+	LevelDuration = 10.0f;
 	CurrentLevelIndex = 0;
 	MaxLevels = 3;
 

@@ -6,6 +6,7 @@
 
 class USpringArmComponent; //미리선언 이런게 있다~ 라고 미리 알려주는거임
 class UCameraComponent;
+class UWidgetComponent;
 struct FInputActionValue;
 
 UCLASS()
@@ -20,6 +21,8 @@ public:
 	USpringArmComponent* SpringArmComp;
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Camera")
 	UCameraComponent* CameraComp;
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "UI")
+	UWidgetComponent* OverheadWidget;
 
 	UFUNCTION(BlueprintPure, Category = "Health")
 	float GetHealth() const;
@@ -35,6 +38,7 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "health")
 	float Health;
 
+	virtual void BeginPlay() override;
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 	virtual float TakeDamage(
 		float DamageAmount, // 데미지 양, 얼마나 데미지를 입었나
@@ -56,6 +60,7 @@ protected:
 	void StopSprint(const FInputActionValue& value);
 
 	void OnDeath();
+	void UpdateOverheadHP();
 
 private:
 	float NormalSpeed;
